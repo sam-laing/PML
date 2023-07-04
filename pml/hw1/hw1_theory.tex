@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+\usepackage{mathptmx}
+\usepackage{bbm}
+\usepackage{tikz-cd,mathtools}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[mathscr]{euscript}
+\usepackage{subcaption}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\graphicspath{ {~/Maths/3rd_sem1/} }
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+        linkcolor=blue,
+        filecolor=magenta,
+        urlcolor=cyan,
+}
+\urlstyle{same}
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\f}{\mathfrak{f}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\l}{\mathfrak{l}}
+\newcommand{\p}{\mathfrak{p}}
+\renewcommand{\P}{\mathfrak{P}}
+\newcommand{\PP}{\mathbb{P}}
+
+
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+\def\svgwidth{\columnwidth}
+\import{./figures/}{#1.pdf_tex}
+}
+
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+\begin{center}
+\Huge{\boldmath{PML HW1}}
+\end{center}
+\[
+	\text{Submitted by Sam, Laing: 6283670 and Albert Catalan Tatjer 6443478} 
+\] 
+\subsection*{a)}
+Assume $P(B|A) \ge P(B)$\\
+We have
+\begin{align*}
+	P(B) &= P(B|A)P(A)+P(B|\neg A)(1-P(A)) \quad (\text{By partition law})\\
+	     &\ge P(B)P(A) + P(B|\neg A)[1-P(A)]  
+\end{align*}
+\begin{align*}
+	\implies \ P(B) [ 1-P(A)] \ge  P(B|\neg A) [1-P(A)] \implies P(B) \ge P(B|\neg A)
+\end{align*}
+\subsection*{b)} 
+\[
+	P(A|B) = \frac{P(A,B)}{P(B)} = \frac{P(B|A)P(A)}{P(B)} \ge  \frac{P(B)P(A)}{P(B)} = P(A)
+\] 
+\subsection*{c)} 
+We have 
+\begin{align*}
+	P(A) &= P(A|B)P(B) + P(A|\neg B)(1-P(B)) \\
+	     &\ge P(A)P(B) + P(A|\neg B)(1-P(B)) \quad \text{(from (b))}
+\end{align*}
+\begin{align*}
+	\implies P(A)[1-P(B)] \ge  P(A|\neg B)[1-P(B)] \implies P(A) \ge P(A|\neg B)
+\end{align*}
+\\
+\subsection*{d)} 
+Now we assume that $P(B|A) = 1$:\\
+We first observe that this immediately implies that $P(\neg B|A) = 0$.
+Then we have:
+ \begin{align*}
+	 P(\neg A|\neg B) = \frac{P(\neg A,\neg B)}{P(\neg B)} = \frac{P(\neg A,\neg B)}{P(\neg B,A) + P(\neg B,\neg A)} 
+\end{align*}
+But we observe that now $P(\neg B,A) = P(\neg B|A)P(A) = 0$. Therefore our expression reduces to 1
+\subsection*{e)} 
+This is just a special case of part (a) (since $1 = P(B|A) \ge P(B)$ with $P(B) \in [0,1]$ by definition of probability)
+\subsection*{f)} 
+This is just a special case of part (c) (since $1 = P(A|B) \ge P(A)$ necessarily)
+\end{document}
